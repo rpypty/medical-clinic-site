@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Phone,
   Calendar,
@@ -6,6 +6,7 @@ import {
   Sparkles,
   Mail,
   ArrowRight,
+  ArrowLeft,
   Instagram,
   CheckCircle2,
   ShieldCheck,
@@ -19,37 +20,37 @@ const services = [
     title: "Очищение кожи",
     description: "Механическая, ультразвуковая, комбинированная, атравматическая — подбор по состоянию кожи.",
     price: "от 110 BYN",
-    image: "/images/service-cleansing.jpg",
+    image: "public/skin-cleaning.jpg",
   },
   {
     title: "Обновление кожи",
     description: "Azelac peel, ZK face peel, Peach peel, salicylic/orange peel — мягко выравниваем тон и текстуру.",
     price: "от 180 BYN",
-    image: "/images/service-peel.jpg",
+    image: "/public/skin-refresh.jpg",
   },
   {
     title: "Лечение кожи",
     description: "Комплексные протоколы для акне, постакне, гиперпигментации, купероза, anti-age.",
     price: "индивидуально",
-    image: "/images/service-therapy.jpg",
+    image: "/public/skin-health.jpg",
   },
   {
     title: "Уходовые процедуры",
     description: "Авторские spa-программы, восстанавливающие маски, массаж лица и шеи, гидратация.",
     price: "от 130 BYN",
-    image: "/images/service-care.jpg",
+    image: "/public/uhod.jpg",
   },
   {
     title: "Аппаратные процедуры",
     description: "Geneo+ и другие технологии для омоложения, лифтинга и улучшения качества кожи.",
-    price: "от 220 BYN",
-    image: "/images/service-device.jpg",
+    price: "110 BYN",
+    image: "/public/apparat-device.jpg",
   },
   {
     title: "Лечение волос",
     description: "Подбор ухода для кожи головы, укрепление луковиц, курсы для профилактики выпадения.",
     price: "от 150 BYN",
-    image: "/images/service-hair.jpg",
+    image: "/public/hair-health.jpg",
   },
 ];
 
@@ -72,28 +73,61 @@ const education: string[] = [
 
 const beforeAfter = [
   {
-    title: "Осветление тона и пор",
-    before: "/images/before-after-1-before.jpg",
-    after: "/images/before-after-1-after.jpg",
-    note: "Нежный пилинг + восстановление барьера, 2 встречи.",
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
   },
   {
-    title: "Успокоение чувствительной кожи",
-    before: "/images/before-after-2-before.jpg",
-    after: "/images/before-after-2-after.jpg",
-    note: "Аппаратная терапия + серум, курс 4 процедуры.",
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
   },
   {
-    title: "Рельеф и сияние",
-    before: "/images/before-after-3-before.jpg",
-    after: "/images/before-after-3-after.jpg",
-    note: "Комбинированная чистка + уход, 1 процедура.",
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
+  },
+  {
+    title: "Подавить прищи",
+    after: "/public/before_after_1.jpg",
+    note: "Подавить прищи красиво",
   },
 ];
 
 export default function CosmetologistLanding() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -155,9 +189,6 @@ export default function CosmetologistLanding() {
             MEDICADERM CLINIC
           </a>
           <nav className="hidden items-center gap-6 text-sm text-zinc-700 md:flex">
-            <a href="#intro" className="hover:text-rose-700">
-              Интро
-            </a>
             <a href="#about" className="hover:text-rose-700">
               Обо мне
             </a>
@@ -182,20 +213,32 @@ export default function CosmetologistLanding() {
       </header>
 
       <section id="hero" className="relative bg-white">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(900px_520px_at_8%_0%,rgba(244,114,182,0.08),transparent)]" />
-        <div className="mx-auto max-w-5xl px-4 py-14 md:py-20">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(900px_520px_at_10%_-10%,rgba(244,114,182,0.08),transparent)]" />
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-20">
           <div className="space-y-7">
             <p className="inline-flex items-center gap-2 rounded-full border border-rose-100 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700 shadow-sm">
               <CheckCircle2 className="h-4 w-4" />
               Сертифицированный косметолог • 8+ лет практики
             </p>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
-              Естественная красота без эффекта «маски»
-            </h1>
-            <p className="max-w-3xl text-lg text-zinc-700">
-              Я — косметолог в Минске. Мягко и бережно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры, авторские
-              программы лечения кожи, ботулинотерапия, биоревитализация.
-            </p>
+            <div className="space-y-4">
+              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
+                Авторская косметология от Анны Кулеш
+              </h1>
+              <p className="max-w-3xl text-lg text-zinc-700">
+                Косметолог с мед. образованием в Минске. Бережно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
+                авторские программы лечения, ботулинотерапия, биоревитализация.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 text-sm">
+              <div className="rounded-2xl border border-rose-100 bg-rose-50/70 p-4">
+                <p className="font-medium text-rose-900">Авторские программы</p>
+                <p className="text-zinc-600">Комбинирую уход, пилинги, аппаратные методики под задачу кожи.</p>
+              </div>
+              <div className="rounded-2xl border border-rose-100 bg-rose-50/70 p-4">
+                <p className="font-medium text-rose-900">Домашний уход</p>
+                <p className="text-zinc-600">Подбираю схемы для закрепления результата между визитами.</p>
+              </div>
+            </div>
             <div className="flex flex-wrap gap-3">
               <a
                 href="#contact"
@@ -222,38 +265,30 @@ export default function CosmetologistLanding() {
               </span>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="intro" className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-rose-700">Интро</p>
-            <h2 className="font-display text-3xl md:text-4xl text-rose-900">Естественные результаты без гиперкоррекции</h2>
-            <p className="text-lg text-zinc-700">
-              Моя цель — чтобы кожа выглядела ухоженной, сияющей и здоровой. Работаю деликатно, использую сертифицированные препараты
-              и строю программу с учётом диагностики, образа жизни и привычек ухода.
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2 text-sm">
-              <div className="rounded-2xl border border-rose-100 bg-rose-50/60 p-4">
-                <p className="font-medium text-rose-900">Авторские программы</p>
-                <p className="text-zinc-600">Комбинирую уход, пилинги и аппаратные методики под задачу.</p>
-              </div>
-              <div className="rounded-2xl border border-rose-100 bg-rose-50/60 p-4">
-                <p className="fofnt-medium text-rose-900">Домашний уход</p>
-                <p className="text-zinc-600">Подбираю схемы для закрепления результата между визитами.</p>
-              </div>
-            </div>
-          </div>
           <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-[28px] border border-rose-100 bg-rose-50 shadow-xl">
-              <img src="/anna_specialist.JPG" alt="Косметолог в халате" className="h-full w-full object-cover" loading="lazy" />
-            </div>
-            <div className="absolute -left-6 -top-6 hidden h-28 w-28 rounded-3xl bg-white/80 backdrop-blur md:flex items-center justify-center shadow-lg shadow-rose-100">
-              <div className="text-center">
-                <p className="text-xs uppercase tracking-[0.12em] text-rose-600">Работаю</p>
-                <p className="text-2xl font-semibold text-rose-900">с 2017</p>
-                <p className="text-xs text-zinc-500">более 1200 процедур</p>
+            <div className="relative overflow-hidden rounded-[32px] border border-white/40 bg-white/60 shadow-xl backdrop-blur-sm">
+              <img
+                src="/anna_specialist.JPG"
+                alt="Косметолог в халате"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute left-4 right-4 top-4 flex items-center gap-2 rounded-2xl border border-white/50 bg-white/60 px-3 py-2 text-sm text-rose-900 shadow-lg backdrop-blur-md">
+                <ShieldCheck className="h-4 w-4" />
+                Медицинское образование и авторские протоколы
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 grid gap-3 text-sm text-rose-900">
+                <div className="flex items-center justify-between rounded-2xl border border-white/40 bg-white/55 px-4 py-3 shadow-lg backdrop-blur-md">
+                  <span className="font-medium">8 лет практики</span>
+                  <span className="text-rose-700">1200+ процедур</span>
+                </div>
+                <div className="rounded-2xl border border-white/40 bg-white/55 px-4 py-3 shadow-lg backdrop-blur-md">
+                  <p className="text-xs uppercase tracking-[0.1em] text-rose-600">Образование</p>
+                  <p className="mt-1 text-sm text-zinc-700">
+                    Медицинский колледж, серебряный призёр WorldSkills, курсы Dermaceutic, HL, Geneo+.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -264,7 +299,6 @@ export default function CosmetologistLanding() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-rose-700">Обо мне</p>
               <h3 className="font-display text-3xl text-rose-900 md:text-4xl">Образование и курсы</h3>
             </div>
             <div className="flex items-center gap-3 text-sm text-rose-800">
@@ -287,7 +321,6 @@ export default function CosmetologistLanding() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-rose-200">Услуги</p>
               <h3 className="font-display text-3xl md:text-4xl text-white">Выберите программу</h3>
               <p className="mt-2 max-w-2xl text-zinc-300">
                 Стоимость зависит от показаний и препаратов. Включены консультация, диагностика кожи и рекомендации по домашнему уходу.
@@ -305,7 +338,7 @@ export default function CosmetologistLanding() {
                 className="group relative overflow-hidden rounded-[26px] border border-white/10 bg-gradient-to-br from-white/5 via-white/0 to-white/5 p-1 shadow-[0_24px_60px_-40px_rgba(0,0,0,0.8)]"
               >
                 <div
-                  className="relative h-40 overflow-hidden rounded-2xl bg-gradient-to-br from-rose-100/50 via-zinc-900/20 to-zinc-900/60"
+                  className="relative h-80 overflow-hidden rounded-2xl bg-gradient-to-br from-rose-100/50 via-zinc-900/20 to-zinc-900/60"
                   style={{
                     backgroundImage: service.image
                       ? `linear-gradient(120deg, rgba(12,10,9,0.35), rgba(12,10,9,0.1)), url('${service.image}')`
@@ -332,10 +365,9 @@ export default function CosmetologistLanding() {
         </div>
       </section>
 
-      <section id="results" className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <section id="results" className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-rose-700">До / После</p>
             <h3 className="font-display text-3xl text-rose-900 md:text-4xl">Результаты пациентов</h3>
           </div>
           <div className="flex items-center gap-2 text-sm text-zinc-600">
@@ -343,47 +375,74 @@ export default function CosmetologistLanding() {
             Фото без фильтров, с согласия клиентов.
           </div>
         </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {beforeAfter.map((item) => (
-            <div key={item.title} className="overflow-hidden rounded-[24px] border border-rose-100 bg-white shadow-[0_18px_40px_-26px_rgba(0,0,0,0.45)]">
-              <div className="grid grid-cols-2">
-                <div
-                  className="relative aspect-[4/5] bg-rose-50"
-                  style={{
-                    backgroundImage: item.before ? `url('${item.before}')` : undefined,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-rose-900 shadow">До</span>
-                </div>
-                <div
-                  className="relative aspect-[4/5] bg-rose-100"
-                  style={{
-                    backgroundImage: item.after ? `url('${item.after}')` : undefined,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <span className="absolute left-3 top-3 rounded-full bg-rose-700 px-3 py-1 text-xs font-semibold text-white shadow">После</span>
-                </div>
+
+        <div className="mt-4 hidden items-center justify-between gap-2 md:flex">
+          <div className="flex gap-2">
+            <button
+              type="button"
+              aria-label="Влево"
+              onClick={() => resultsRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
+              className="rounded-full border border-rose-100 bg-white px-3 py-2 text-rose-800 shadow-sm hover:bg-rose-50"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Вправо"
+              onClick={() => resultsRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
+              className="rounded-full border border-rose-100 bg-white px-3 py-2 text-rose-800 shadow-sm hover:bg-rose-50"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={resultsRef}
+          className="mt-3 flex snap-x snap-mandatory gap-4 overflow-x-auto rounded-[16px] border border-rose-100 bg-white/85 px-5 py-4 shadow-[0_10px_24px_-20px_rgba(0,0,0,0.35)] md:gap-5 lg:gap-6"
+        >
+          {beforeAfter.map((item, idx) => (
+            <div
+              key={item.title}
+              className="snap-start overflow-hidden rounded-[18px] border border-rose-100 bg-white shadow-sm flex-shrink-0 w-[240px] md:w-[260px] lg:w-[280px]"
+            >
+              <div
+                className="relative aspect-[4/5] overflow-hidden rounded-[14px] bg-gradient-to-br from-rose-50 via-white to-rose-100"
+                style={{
+                  backgroundImage: item.after
+                    ? `linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)), url('${item.after}')`
+                    : item.before
+                      ? `linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)), url('${item.before}')`
+                      : undefined,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {!item.after && !item.before && (
+                  <div className="absolute inset-0 flex items-center justify-center text-sm font-medium text-rose-300">
+                    Фото скоро
+                  </div>
+                )}
+                <span className="absolute left-2 top-2 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-semibold text-rose-900 shadow">
+                  Фото {idx + 1}
+                </span>
               </div>
-              <div className="space-y-2 p-4">
-                <p className="font-semibold text-rose-900">{item.title}</p>
-                <p className="text-sm text-zinc-600">{item.note}</p>
+              <div className="space-y-1.5 p-3">
+                <p className="text-sm font-semibold text-rose-900 line-clamp-2">{item.title}</p>
+                <p className="text-xs text-zinc-600 line-clamp-2">{item.note}</p>
               </div>
             </div>
           ))}
+          <div className="flex-shrink-0 w-2" aria-hidden />
         </div>
       </section>
 
       <section id="contact" className="bg-gradient-to-b from-rose-50 via-white to-rose-50">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-rose-700">Форма записи</p>
             <h3 className="font-display text-3xl text-rose-900 md:text-4xl">Свяжусь в Telegram после заявки</h3>
             <p className="text-zinc-700">
-              Оставьте контакты — отправлю в Telegram и уточню удобное время. Можно сразу писать в мессенджер: @medicaderm.
+              Оставьте контакты и я свяжусь с Вами для дальнейшего уточнения деталей и записи. Можно сразу писать в инстаграмме: @ani.kulesh.
             </p>
             <div className="grid gap-3 sm:grid-cols-2 text-sm">
               <div className="flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/80 p-4">
@@ -397,14 +456,14 @@ export default function CosmetologistLanding() {
                 <Instagram className="h-5 w-5 text-rose-700" />
                 <div>
                   <p className="font-medium text-rose-900">Instagram</p>
-                  <p className="text-zinc-600">@medicaderm (прямая ссылка из инсты)</p>
+                  <p className="text-zinc-600">@ani.kulesh</p>
                 </div>
               </div>
             </div>
             <div className="rounded-3xl border border-rose-100 bg-white/80 p-6 text-sm text-zinc-700 shadow">
               <p className="font-semibold text-rose-900">Адрес и навигация</p>
               <p className="mt-2 text-zinc-600">
-                Минск, уточняем при записи. В поиске карт и интернете — MEDICADERM CLINIC. Удобный вход, парковка рядом.
+                г. Минск, ул. Минская 82.
               </p>
             </div>
           </div>
@@ -491,15 +550,15 @@ export default function CosmetologistLanding() {
             MEDICADERM CLINIC • Клиника авторской косметологии
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <a href="https://t.me/medicaderm" className="inline-flex items-center gap-2 hover:text-rose-800">
+            <a href="https://t.me/ani_kulesh" className="inline-flex items-center gap-2 hover:text-rose-800">
               <Mail className="h-4 w-4" />
-              t.me/medicaderm
+              t.me/ani_kulesh
             </a>
-            <a href="https://instagram.com/medicaderm" className="inline-flex items-center gap-2 hover:text-rose-800">
+            <a href="https://instagram.com/ani.kulesh" className="inline-flex items-center gap-2 hover:text-rose-800">
               <Instagram className="h-4 w-4" />
               Instagram
             </a>
-            <a href="tel:+375000000000" className="inline-flex items-center gap-2 hover:text-rose-800">
+            <a href="tel:+375333053850" className="inline-flex items-center gap-2 hover:text-rose-800">
               <Phone className="h-4 w-4" />
               Позвонить
             </a>
