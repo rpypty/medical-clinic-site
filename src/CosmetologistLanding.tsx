@@ -72,56 +72,27 @@ const education: string[] = [
 ];
 
 const beforeAfter = [
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
-  {
-    title: "Подавить прищи",
-    after: "/public/before_after_1.jpg",
-    note: "Подавить прищи красиво",
-  },
+  { title: "Работа 1", after: "/beforeafter/ba_1.JPG", note: "Результат процедуры" },
+  { title: "Работа 2", after: "/beforeafter/ba_2.JPG", note: "Результат процедуры" },
+  { title: "Работа 3", after: "/beforeafter/ba_3.JPG", note: "Результат процедуры" },
+  { title: "Работа 4", after: "/beforeafter/ba_4.JPG", note: "Результат процедуры" },
+  { title: "Работа 6", after: "/beforeafter/ba_6.JPG", note: "Результат процедуры" },
+  { title: "Работа 7", after: "/beforeafter/ba_7.JPG", note: "Результат процедуры" },
+  { title: "Работа 9", after: "/beforeafter/ba_9.PNG", note: "Результат процедуры" },
+  { title: "Работа 11", after: "/beforeafter/ba_11.JPG", note: "Результат процедуры" },
+  { title: "Работа 12", after: "/beforeafter/ba_12.JPEG", note: "Результат процедуры" },
+  { title: "Работа 13", after: "/beforeafter/ba_13.JPG", note: "Результат процедуры" },
+  { title: "Работа 14", after: "/beforeafter/ba_14.JPG", note: "Результат процедуры" },
+  { title: "Работа 16", after: "/beforeafter/ba_16.JPG", note: "Результат процедуры" },
+  { title: "Работа 17", after: "/beforeafter/ba_17.JPG", note: "Результат процедуры" },
+  { title: "Работа 18", after: "/beforeafter/ba_18.JPG", note: "Результат процедуры" },
+  { title: "Работа 19", after: "/beforeafter/ba_19.JPG", note: "Результат процедуры" },
+  { title: "Работа 20", after: "/beforeafter/ba_20.PNG", note: "Результат процедуры" },
+  { title: "Работа 21", after: "/beforeafter/ba_21.PNG", note: "Результат процедуры" },
+  { title: "Работа 22", after: "/beforeafter/ba_22.PNG", note: "Результат процедуры" },
+  { title: "Работа 23", after: "/beforeafter/ba_23.JPG", note: "Результат процедуры" },
+  { title: "Работа 24", after: "/beforeafter/ba_24.PNG", note: "Результат процедуры" },
+  { title: "Работа 25", after: "/beforeafter/ba_25.JPEG", note: "Результат процедуры" },
 ];
 
 export default function CosmetologistLanding() {
@@ -186,7 +157,7 @@ export default function CosmetologistLanding() {
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-rose-50 text-rose-700 shadow-inner">
               <Sparkles className="h-5 w-5" />
             </span>
-            MEDICADERM CLINIC
+            ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ. КА
           </a>
           <nav className="hidden items-center gap-6 text-sm text-zinc-700 md:flex">
             <a href="#about" className="hover:text-rose-700">
@@ -212,7 +183,16 @@ export default function CosmetologistLanding() {
         </div>
       </header>
 
-      <section id="hero" className="relative bg-white">
+      <section
+        id="hero"
+        className="relative bg-white"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255,255,255), rgba(255,255,255,0.97)), url('/bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(900px_520px_at_10%_-10%,rgba(244,114,182,0.08),transparent)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-20">
           <div className="space-y-7">
@@ -352,7 +332,6 @@ export default function CosmetologistLanding() {
                 <div className="space-y-3 p-5">
                   <div className="flex items-center justify-between gap-3">
                     <h4 className="text-lg font-semibold text-white">{service.title}</h4>
-                    <span className="rounded-full bg-rose-100/20 px-3 py-1 text-xs font-semibold text-rose-100">{service.price}</span>
                   </div>
                   <p className="text-sm text-zinc-200">{service.description}</p>
                   <button className="inline-flex items-center gap-2 text-sm font-medium text-rose-100 transition hover:text-white" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
@@ -400,10 +379,11 @@ export default function CosmetologistLanding() {
         <div
           ref={resultsRef}
           className="mt-3 flex snap-x snap-mandatory gap-4 overflow-x-auto rounded-[16px] border border-rose-100 bg-white/85 px-5 py-4 shadow-[0_10px_24px_-20px_rgba(0,0,0,0.35)] md:gap-5 lg:gap-6"
+          style={{ scrollPaddingLeft: "20px", scrollPaddingRight: "12px" }}
         >
           {beforeAfter.map((item, idx) => (
             <div
-              key={item.title}
+              key={item.after}
               className="snap-start overflow-hidden rounded-[18px] border border-rose-100 bg-white shadow-sm flex-shrink-0 w-[240px] md:w-[260px] lg:w-[280px]"
             >
               <div
@@ -411,14 +391,12 @@ export default function CosmetologistLanding() {
                 style={{
                   backgroundImage: item.after
                     ? `linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)), url('${item.after}')`
-                    : item.before
-                      ? `linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)), url('${item.before}')`
-                      : undefined,
+                    : undefined,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                {!item.after && !item.before && (
+                {!item.after && (
                   <div className="absolute inset-0 flex items-center justify-center text-sm font-medium text-rose-300">
                     Фото скоро
                   </div>
@@ -426,10 +404,6 @@ export default function CosmetologistLanding() {
                 <span className="absolute left-2 top-2 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-semibold text-rose-900 shadow">
                   Фото {idx + 1}
                 </span>
-              </div>
-              <div className="space-y-1.5 p-3">
-                <p className="text-sm font-semibold text-rose-900 line-clamp-2">{item.title}</p>
-                <p className="text-xs text-zinc-600 line-clamp-2">{item.note}</p>
               </div>
             </div>
           ))}
@@ -442,21 +416,21 @@ export default function CosmetologistLanding() {
           <div className="space-y-4">
             <h3 className="font-display text-3xl text-rose-900 md:text-4xl">Свяжусь в Telegram после заявки</h3>
             <p className="text-zinc-700">
-              Оставьте контакты и я свяжусь с Вами для дальнейшего уточнения деталей и записи. Можно сразу писать в инстаграмме: @ani.kulesh.
+              Оставьте контакты и я свяжусь с Вами для дальнейшего уточнения деталей и записи. Можно сразу писать в инстаграмме: @ani.facetune__aesthetics.
             </p>
             <div className="grid gap-3 sm:grid-cols-2 text-sm">
               <div className="flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/80 p-4">
                 <Clock3 className="h-5 w-5 text-rose-700" />
                 <div>
                   <p className="font-medium text-rose-900">График</p>
-                  <p className="text-zinc-600">Пн–Сб • 10:00–21:00</p>
+                  <p className="text-zinc-600">Пн–Сб •у 10:00–21:00</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/80 p-4">
                 <Instagram className="h-5 w-5 text-rose-700" />
                 <div>
                   <p className="font-medium text-rose-900">Instagram</p>
-                  <p className="text-zinc-600">@ani.kulesh</p>
+                  <p className="text-zinc-600">@ani.facetune__aesthetics</p>
                 </div>
               </div>
             </div>
@@ -547,14 +521,14 @@ export default function CosmetologistLanding() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-zinc-600 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3 text-rose-900">
             <Sparkles className="h-4 w-4" />
-            MEDICADERM CLINIC • Клиника авторской косметологии
+            ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ. КА
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm">
             <a href="https://t.me/ani_kulesh" className="inline-flex items-center gap-2 hover:text-rose-800">
               <Mail className="h-4 w-4" />
               t.me/ani_kulesh
             </a>
-            <a href="https://instagram.com/ani.kulesh" className="inline-flex items-center gap-2 hover:text-rose-800">
+            <a href="https://instagram.com/ani.facetune__aesthetics" className="inline-flex items-center gap-2 hover:text-rose-800">
               <Instagram className="h-4 w-4" />
               Instagram
             </a>
