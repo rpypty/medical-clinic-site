@@ -202,7 +202,7 @@ export default function CosmetologistLanding() {
             </p>
             <div className="space-y-4">
               <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
-                Авторская косметология от Анны Кулеш
+                Авторская косметология от&nbsp;Анны&nbsp;Кулеш
               </h1>
               <p className="max-w-3xl text-lg text-zinc-700">
                 Косметолог с мед. образованием в Минске. Бережно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
@@ -261,7 +261,7 @@ export default function CosmetologistLanding() {
               <div className="absolute bottom-4 left-4 right-4 grid gap-3 text-sm text-rose-900">
                 <div className="flex items-center justify-between rounded-2xl border border-white/40 bg-white/55 px-4 py-3 shadow-lg backdrop-blur-md">
                   <span className="font-medium">8 лет практики</span>
-                  <span className="text-rose-700">1200+ процедур</span>
+                  <span className="text-rose-700">3800+ процедур</span>
                 </div>
                 <div className="rounded-2xl border border-white/40 bg-white/55 px-4 py-3 shadow-lg backdrop-blur-md">
                   <p className="text-xs uppercase tracking-[0.1em] text-rose-600">Образование</p>
