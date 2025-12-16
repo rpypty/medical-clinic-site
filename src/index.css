@@ -1,12 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,500&family=Manrope:wght@400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-soft-heading: "Lora", "Times New Roman", serif;
+  }
   html {
     @apply scroll-smooth;
   }
   body {
+    font-family: var(--font-body);
     @apply bg-white text-zinc-900 antialiased;
   }
+}
+
+.font-soft-heading {
+  font-family: var(--font-soft-heading);
+  letter-spacing: -0.01em;
 }

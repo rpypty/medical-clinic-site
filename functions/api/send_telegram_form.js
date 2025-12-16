@@ -38,8 +38,8 @@ export async function onRequest({ request, env }) {
   const text = [
     "<b>Новая заявка с сайта</b>",
     `Имя: ${name}`,
-    `Телефон: ${phone}`,
-    `Услуга: ${service}`,
+    `Телефон или телеграмм: ${phone}`,
+    `Выбранная: ${service}`,
     comment ? `Комментарий: ${comment}` : "",
   ].filter(Boolean).join("\n");
 

@@ -102,7 +102,8 @@ export default function CosmetologistLanding() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get("name")?.toString().trim() ?? "";
     const phone = formData.get("phone")?.toString().trim() ?? "";
     const service = formData.get("service")?.toString() ?? "";
@@ -121,8 +122,8 @@ export default function CosmetologistLanding() {
       if (!response.ok) throw new Error("Request failed");
 
       setStatus("success");
-      setStatusMessage("Заявка отправлена. Я свяжусь с вами в ближайшее время.");
-      event.currentTarget.reset();
+      setStatusMessage("Заявка отправлена. Свяжемся с Вами в ближайшее время.");
+      form.reset();
     } catch (error) {
       console.error(error);
       setStatus("error");
@@ -182,12 +183,13 @@ export default function CosmetologistLanding() {
               Сертифицированный косметолог • 8+ лет практики
             </p>
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
-                !!! Авторская косметология от&nbsp;Анны&nbsp;Кулеш
+              <h1 className="font-soft-heading text-4xl font-semibold italic leading-snug text-rose-900 md:text-5xl">
+                Авторская косметология <br></br> от Анны Кулеш
               </h1>
               <p className="max-w-3xl text-lg text-zinc-700">
-                Косметолог с мед. образованием в Минске. Бережно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
-                авторские программы лечения, ботулинотерапия, биоревитализация.
+                Косметолог с мед. образованием в Минске <br></br>
+                Бережно и результативно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
+              авторские программы лечения, ботулинотерапия, биоревитализация.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 text-sm">
@@ -222,7 +224,7 @@ export default function CosmetologistLanding() {
               </span>
               <span className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                Минск, мед. лицензия
+                г. Минск
               </span>
             </div>
           </div>
@@ -247,7 +249,8 @@ export default function CosmetologistLanding() {
                 <div className="rounded-2xl border border-white/40 bg-white/55 px-4 py-3 shadow-lg backdrop-blur-md">
                   <p className="text-xs uppercase tracking-[0.1em] text-rose-600">Образование</p>
                   <p className="mt-1 text-sm text-zinc-700">
-                    Медицинский колледж, серебряный призёр WorldSkills, курсы Dermaceutic, HL, Geneo+.
+                  Медицинское  образование. Серебряный призер по косметологии 2018 г 
+                  WorldSkills
                   </p>
                 </div>
               </div>
@@ -288,7 +291,7 @@ export default function CosmetologistLanding() {
               </p>
             </div>
             <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-rose-300/80 px-4 py-2 text-rose-100 transition hover:bg-rose-100 hover:text-zinc-950">
-              Записаться на диагностику <ArrowRight className="h-4 w-4" />
+              Записаться на консультацию <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
@@ -418,7 +421,7 @@ export default function CosmetologistLanding() {
             <div className="rounded-3xl border border-rose-100 bg-white/80 p-6 text-sm text-zinc-700 shadow">
               <p className="font-semibold text-rose-900">Адрес и навигация</p>
               <p className="mt-2 text-zinc-600">
-                г. Минск, ул. Минская 82.
+                г. Минск
               </p>
             </div>
           </div>
