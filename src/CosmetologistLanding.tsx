@@ -20,37 +20,37 @@ const services = [
     title: "Очищение кожи",
     description: "Механическая, ультразвуковая, комбинированная, атравматическая — подбор по состоянию кожи.",
     price: "от 110 BYN",
-    image: "public/skin-cleaning.jpg",
+    image: "/skin-cleaning.jpg",
   },
   {
     title: "Обновление кожи",
     description: "Azelac peel, ZK face peel, Peach peel, salicylic/orange peel — мягко выравниваем тон и текстуру.",
     price: "от 180 BYN",
-    image: "/public/skin-refresh.jpg",
+    image: "/skin-refresh.jpg",
   },
   {
     title: "Лечение кожи",
     description: "Комплексные протоколы для акне, постакне, гиперпигментации, купероза, anti-age.",
     price: "индивидуально",
-    image: "/public/skin-health.jpg",
+    image: "/skin-health.jpg",
   },
   {
     title: "Уходовые процедуры",
     description: "Авторские spa-программы, восстанавливающие маски, массаж лица и шеи, гидратация.",
     price: "от 130 BYN",
-    image: "/public/uhod.jpg",
+    image: "/uhod.jpg",
   },
   {
     title: "Аппаратные процедуры",
     description: "Geneo+ и другие технологии для омоложения, лифтинга и улучшения качества кожи.",
     price: "110 BYN",
-    image: "/public/apparat-device.jpg",
+    image: "/apparat-device.jpg",
   },
   {
     title: "Лечение волос",
     description: "Подбор ухода для кожи головы, укрепление луковиц, курсы для профилактики выпадения.",
     price: "от 150 BYN",
-    image: "/public/hair-health.jpg",
+    image: "/hair-health.jpg",
   },
 ];
 
