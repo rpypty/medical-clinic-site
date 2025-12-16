@@ -183,7 +183,7 @@ export default function CosmetologistLanding() {
             </p>
             <div className="space-y-4">
               <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
-                Авторская косметология от&nbsp;Анны&nbsp;Кулеш
+                !!! Авторская косметология от&nbsp;Анны&nbsp;Кулеш
               </h1>
               <p className="max-w-3xl text-lg text-zinc-700">
                 Косметолог с мед. образованием в Минске. Бережно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
