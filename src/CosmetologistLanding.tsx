@@ -24,7 +24,7 @@ const services = [
   },
   {
     title: "Обновление кожи",
-    description: "Azelac peel, ZK face peel, Peach peel, salicylic/orange peel — мягко выравниваем тон и текстуру.",
+    description: "Azelac peel, ZK face peel, Peach peel, salicylic/orange peel — мягко выравниваем тон и текстуру",
     price: "от 180 BYN",
     image: "/skin-refresh.jpg",
   },
