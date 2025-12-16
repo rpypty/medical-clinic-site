@@ -1,13 +1,24 @@
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*", // лучше заменить на свой домен
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 export async function onRequest({ request, env }) {
+  // Preflight
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
   if (request.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+    return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
   }
 
   let payload;
   try {
     payload = await request.json();
   } catch {
-    return new Response("Invalid JSON", { status: 400 });
+    return new Response("Invalid JSON", { status: 400, headers: corsHeaders });
   }
 
   const name = (payload?.name || "").trim();
@@ -16,11 +27,12 @@ export async function onRequest({ request, env }) {
   const comment = (payload?.comment || "").trim();
 
   if (!name || !phone || !service) {
-    return new Response("Missing required fields", { status: 400 });
+    return new Response("Missing required fields", { status: 400, headers: corsHeaders });
   }
 
   if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
-    return new Response("Telegram configuration missing", { status: 500 });
+    // Это почти наверняка будет, если vars не заданы в Preview/Prod
+    return new Response("Telegram configuration missing", { status: 500, headers: corsHeaders });
   }
 
   const text = [
@@ -29,25 +41,41 @@ export async function onRequest({ request, env }) {
     `Телефон: ${phone}`,
     `Услуга: ${service}`,
     comment ? `Комментарий: ${comment}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  ].filter(Boolean).join("\n");
 
   const telegramUrl = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-  const telegramResponse = await fetch(telegramUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text, parse_mode: "HTML" }),
-  });
+  // Таймаут на запрос к Telegram
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), 8000);
 
-  if (!telegramResponse.ok) {
-    const errorText = await telegramResponse.text();
-    return new Response(errorText || "Telegram request failed", { status: 502 });
+  try {
+    const telegramResponse = await fetch(telegramUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text,
+        parse_mode: "HTML",
+        disable_web_page_preview: true,
+      }),
+      signal: controller.signal,
+    });
+
+    if (!telegramResponse.ok) {
+      const errorText = await telegramResponse.text();
+      console.log("Telegram error:", telegramResponse.status, errorText);
+      return new Response("Telegram request failed", { status: 502, headers: corsHeaders });
+    }
+
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
+  } catch (e) {
+    console.log("Fetch to Telegram failed:", e?.message || e);
+    return new Response("Upstream request failed", { status: 502, headers: corsHeaders });
+  } finally {
+    clearTimeout(t);
   }
-
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
 }
