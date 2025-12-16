@@ -183,7 +183,7 @@ export default function CosmetologistLanding() {
               Сертифицированный косметолог • 8+ лет практики
             </p>
             <div className="space-y-4">
-              <h1 className="font-soft-heading text-4xl font-semibold italic leading-snug text-rose-900 md:text-5xl">
+              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
                 Авторская косметология <br></br> от Анны Кулеш
               </h1>
               <p className="max-w-3xl text-lg text-zinc-700">
@@ -476,7 +476,7 @@ export default function CosmetologistLanding() {
 
             <label className="flex items-start gap-3 text-sm text-zinc-700">
               <input type="checkbox" required className="mt-1 h-4 w-4 rounded border-rose-200 text-rose-700 focus:ring-rose-300" />
-              Согласен(а) с обработкой персональных данных и передачей контакта для связи в Telegram.
+              Согласен(а) с обработкой персональных данных
             </label>
 
             <button
