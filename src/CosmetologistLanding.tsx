@@ -19,7 +19,7 @@ const services = [
   {
     title: "Очищение кожи",
     description: "Механическая, ультразвуковая, комбинированная, атравматическая — подбор по состоянию кожи.",
-    price: "от 111 BYN",
+    price: "от 112 BYN",
     image: "/skin-cleaning.jpg",
   },
   {
