@@ -108,44 +108,25 @@ export default function CosmetologistLanding() {
     const service = formData.get("service")?.toString() ?? "";
     const comment = formData.get("comment")?.toString() ?? "";
 
-    const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-
-    if (!token || !chatId) {
-      setStatus("error");
-      setStatusMessage("Добавьте VITE_TELEGRAM_BOT_TOKEN и VITE_TELEGRAM_CHAT_ID в .env.local, чтобы форма отправляла в Telegram.");
-      return;
-    }
-
     setStatus("sending");
     setStatusMessage("");
 
-    const text = [
-      "<b>Новая заявка с сайта</b>",
-      `Имя: ${name}`,
-      `Телефон: ${phone}`,
-      `Услуга: ${service}`,
-      comment ? `Комментарий: ${comment}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-
     try {
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      const response = await fetch("/api/send_telegram_form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML" }),
+        body: JSON.stringify({ name, phone, service, comment }),
       });
 
-      if (!response.ok) throw new Error("Telegram request failed");
+      if (!response.ok) throw new Error("Request failed");
 
       setStatus("success");
-      setStatusMessage("Заявка отправлена в Telegram. Я свяжусь с вами в ближайшее время.");
+      setStatusMessage("Заявка отправлена. Я свяжусь с вами в ближайшее время.");
       event.currentTarget.reset();
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setStatusMessage("Не удалось отправить. Проверьте интернет или ключ бота.");
+      setStatusMessage("Не удалось отправить. Попробуйте ещё раз позже.");
     }
   };
 

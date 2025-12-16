@@ -13,3 +13,10 @@ npm run dev - запускает хост
 wrangler deploy 
 ```
 Надо чтобы был установлен wrangler cli (npm install wrangler) и добавлена зависимость в проект
+
+## Секреты для Telegram
+Перед деплоем сохраните ключи в секретах Cloudflare:
+```
+wrangler secret put TELEGRAM_BOT_TOKEN
+wrangler secret put TELEGRAM_CHAT_ID
+```
