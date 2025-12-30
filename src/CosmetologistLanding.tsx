@@ -30,7 +30,7 @@ const services = [
   },
   {
     title: "Лечение кожи",
-    description: "Комплексные протоколы для акне, постакне, гиперпигментации, купероза, anti-age.",
+    description: "Комплексные протоколы для лечения акне, постакне, гиперпигментации, купероза, anti-age.",
     price: "индивидуально",
     image: "/skin-health.jpg",
   },
@@ -187,7 +187,7 @@ export default function CosmetologistLanding() {
                 Авторская косметология <br></br> от Анны Кулеш
               </h1>
               <p className="max-w-3xl text-lg text-zinc-700">
-                Косметолог с мед. образованием в Минске <br></br>
+                Косметолог с медицинским образованием в Минске <br></br>
                 Бережно и результативно помогаю коже выглядеть здоровой и ухоженной: уходовые процедуры,
               авторские программы лечения, ботулинотерапия, биоревитализация.
               </p>
@@ -407,7 +407,7 @@ export default function CosmetologistLanding() {
                 <Clock3 className="h-5 w-5 text-rose-700" />
                 <div>
                   <p className="font-medium text-rose-900">График</p>
-                  <p className="text-zinc-600">Пн–Сб •у 10:00–21:00</p>
+                  <p className="text-zinc-600">Пн–Сб • 10:00-20:00</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/80 p-4">
