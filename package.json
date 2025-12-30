@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prod-deploy": "wrangler pages deploy dist"
+    "prod-deploy": "npm run build && wrangler pages deploy dist"
   },
   "dependencies": {
     "lucide-react": "^0.552.0",
